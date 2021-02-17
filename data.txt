@@ -1,0 +1,9 @@
+curl \
+  -H 'Accept-Encoding: deflate' \
+  -H 'Connection: keep-alive' \
+  -H 'User-Agent: Script' \
+  https://www.nasdaq.com/api/v1/historical/AAPL/stocks/2020-01-20/2021-01-20
+  
+  https://bitcointalk.org/index.php?topic=2647654.0
+  https://ethermine.org/start
+  https://www.exodus.com/

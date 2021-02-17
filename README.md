@@ -1,5 +1,17 @@
 # StockApp
 
+
+## About
+
+This is a demo app for fetching stock data and displaying it on a web application.
+
+##  Setup instructions
+
+clone the repository or download the .zip folder from the github page.
+
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.3.
 
 ## Development server
