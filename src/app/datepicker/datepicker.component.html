@@ -1,0 +1,19 @@
+<div>
+  <p>Step 1: Select the date</p>
+  <mat-form-field appearance="outline" class="field">
+    <mat-label>Select Date Range</mat-label>
+       
+    <mat-date-range-input [rangePicker]="picker" [formGroup]="range" class="field">
+      <input matStartDate placeholder="Start Date" formControlName="start">
+      <input matEndDate placeholder="End Date" formControlName="end">
+    </mat-date-range-input>
+        
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+       
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <button (click)="datePicked()">fetch data</button> 
+  <p>Displaying data from {{range.value.start | date}} to {{range.value.end | date}}</p>
+
+  
+</div>
