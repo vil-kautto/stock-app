@@ -1,0 +1,27 @@
+<div>
+
+  <input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" />    
+<table class="minimalistBlack" *ngIf="dataSet.length > 0">    
+  <thead>    
+    <tr>    
+      <th>Date </th>    
+      <th>Close </th>    
+      <th>Volume </th>    
+      <th>Open </th>    
+      <th>High </th>    
+      <th>Low </th>    
+    </tr>    
+  </thead>    
+  <tbody>    
+    <tr *ngFor="let data of dataSet;let i = index;">    
+      <td> <span>{{data.date}}</span> </td>    
+      <td> <span>{{data.close}}</span> </td>    
+      <td> <span>{{data.volume}}</span> </td>    
+      <td> <span>{{data.open}}</span> </td>    
+      <td> <span>{{data.high}}</span> </td>    
+      <td> <span>{{data.low}}</span> </td>    
+    </tr>    
+  </tbody>    
+</table>
+</div>
+

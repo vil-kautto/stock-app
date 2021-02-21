@@ -16,13 +16,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+import { CSVReaderComponent } from './csv-reader/csv-reader.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TrackerComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    CSVReaderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     MatNativeDateModule,
     MatInputModule,
     MatIconModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'fi-FI'}

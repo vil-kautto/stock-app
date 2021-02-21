@@ -1,5 +1,5 @@
 <div>
-  <p>Step 1: Select the date</p>
+  <p>Step 1: Enter the date range</p>
   <mat-form-field appearance="outline" class="field">
     <mat-label>Select Date Range</mat-label>
        
@@ -12,8 +12,7 @@
        
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
-  <button (click)="datePicked()">fetch data</button> 
+  <button mat-raised-button (click)="datePicked()">Fetch data from file</button> 
   <p>Displaying data from {{range.value.start | date}} to {{range.value.end | date}}</p>
 
-  
 </div>

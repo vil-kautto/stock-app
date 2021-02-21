@@ -8,8 +8,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 
 export class DatepickerComponent {
-  title = 'my-app';
-   
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
