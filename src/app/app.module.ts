@@ -5,7 +5,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TrackerComponent } from './tracker/tracker.component';
-import { DatepickerComponent } from './datepicker/datepicker.component'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // material modules
@@ -25,7 +24,6 @@ import { CSVReaderComponent } from './csv-reader/csv-reader.component';
   declarations: [
     AppComponent,
     TrackerComponent,
-    DatepickerComponent,
     CSVReaderComponent
   ],
   imports: [

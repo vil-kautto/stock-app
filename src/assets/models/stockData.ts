@@ -1,4 +1,4 @@
-export class stockData {
+export class StockData {
     public date: any;
     public close: any;
     public volume: any;
