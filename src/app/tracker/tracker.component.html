@@ -19,30 +19,40 @@
 
 <div *ngIf="dateEntered">
   <p>Displaying data from {{range.value.start | date}} to {{range.value.end | date}}</p>
-  <p id="bull-trend">Longest bullish trend: {{bullTrend}} days between {{bullStart | date}} and {{bullingStock | date}}</p>
-  <p>Largest trading volume during selected period: {{tradeVolume}}</p>
-  <p>The most significant price change within a day: {{sigPriceChange}}</p>
-  <p>The best opening price compared to 5 day average: {{sma}}</p>
-  
-  <table class="minimalistBlack" *ngIf="dateEntered">    
+  <p>Longest bull-ish trend: {{bullTrend}} days between {{bullStart | date}} and {{bullingStock | date}}</p>
+  <mat-divider class="divider"></mat-divider>
+  <table class="minimalistBlack">    
     <thead>    
       <tr>    
-        <th>Date </th>    
-        <th>Close </th>    
+        <th>Date </th>       
         <th>Volume </th>    
-        <th>Open </th>    
-        <th>High </th>    
-        <th>Low </th>    
+        <th>Change </th>    
       </tr>    
     </thead>    
     <tbody>    
-      <tr *ngFor="let data of validList;let i = index;">    
-        <td> <span>{{data.date}}</span> </td>    
-        <td> <span>{{data.close}}</span> </td>    
-        <td> <span>{{data.volume}}</span> </td>    
-        <td> <span>{{data.open}}</span> </td>    
-        <td> <span>{{data.high}}</span> </td>    
-        <td> <span>{{data.low}}</span> </td>    
+      <tr *ngFor="let data of sortedList;let i = index;">    
+        <td> <span>{{data.date}}</span> </td>
+        <td> <span>{{data.volume}}</span> </td>
+        <td> <span>${{data.change}}</span> </td>
+      </tr>    
+    </tbody>
+  </table>
+
+  <mat-divider class="divider"></mat-divider>
+  <p>The best opening price compared to 5 day average:</p>
+  <table class="minimalistBlack">    
+    <thead>    
+      <tr>    
+        <th>Date </th>    
+        <th>SMA-5 </th>    
+        <th>Price change </th>      
+      </tr>    
+    </thead>    
+    <tbody>    
+      <tr *ngFor="let smaItem of smaArray;let i = index;">    
+        <td> <span>{{smaItem.date}}</span> </td>    
+        <td> <span>{{smaItem.sma}}</span> </td>    
+        <td> <span>{{smaItem.change}}%</span> </td>    
       </tr>    
     </tbody>    
   </table>

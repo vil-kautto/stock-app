@@ -29,7 +29,7 @@ export class CSVReaderComponent implements OnInit {
   
     // Checking the included file is in correct format
     if (this.isCSV(files[0])) {  
-      this.fileUploaded = true;
+      //this.fileUploaded = true;
       let input = $event.target;  
       let reader = new FileReader();  
       reader.readAsText(input.files[0]);  
@@ -66,11 +66,12 @@ export class CSVReaderComponent implements OnInit {
       if (currentLine.length == valueCount) {  
         let csvItem: StockData = new StockData();  
         csvItem.date = currentLine[0].trim();  
-        csvItem.close = currentLine[1].trim();  
+        csvItem.close = currentLine[1].trim().slice(1);  
         csvItem.volume = currentLine[2].trim();  
-        csvItem.open = currentLine[3].trim();  
-        csvItem.high = currentLine[4].trim();  
-        csvItem.low = currentLine[5].trim();  
+        csvItem.open = currentLine[3].trim().slice(1);  
+        csvItem.high = currentLine[4].trim().slice(1);  
+        csvItem.low = currentLine[5].trim().slice(1);  
+        csvItem.change = (Number.parseFloat(csvItem.high) - Number.parseFloat(csvItem.low)).toFixed(3);
         this.dataSource.updateData(csvItem);  
       }  
     }   

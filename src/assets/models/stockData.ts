@@ -5,4 +5,5 @@ export class StockData {
     public open: any;
     public high: any;
     public low: any;
+    public change: any;
 }

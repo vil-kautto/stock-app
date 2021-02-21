@@ -44,3 +44,7 @@ table.minimalistBlack tfoot {
 table.minimalistBlack tfoot td {  
     font-size: 14px  
 }
+
+.divider {
+    margin: 20px 0;
+}
