@@ -1,7 +1,7 @@
 <div>
   <header>
-    <h1>Stock Analyzer</h1>
-    <h3>Stock price tracker</h3>
+    <h1>Stock app</h1>
+    <h3>Simple stock price analyzer</h3>
   </header>
 
   <div class="container">
@@ -9,12 +9,11 @@
     <mat-divider class="divider"></mat-divider>
     <app-tracker class="item"></app-tracker>
   </div>
-  
 
   <footer>
-    <p>Site made by Ville Kautto</p>
-    <p>Powered by Angular & material</p>
-    <p>Source code on GitHub</p>
+    <p>Site made by <a (click)="clickPersonal()">Ville Kautto</a>  </p>
+    <p>Powered by <a (click)="clickAngular()">Angular </a> & <a (click)="clickMaterial()">material</a></p>
+    <p>Source code on <a (click)="clickGithub()">GitHub</a></p>
   </footer>
 </div>
 
