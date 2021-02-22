@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { StockData } from '../../assets/models/StockData';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DataService } from '../services/DataService'
@@ -10,6 +10,7 @@ import { SMAData } from '../../assets/models/SMAData';
   styleUrls: ['./tracker.component.css']
 })
 export class TrackerComponent implements OnInit {
+  // this formgroup is used by the date picker in the .html file
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
@@ -17,6 +18,7 @@ export class TrackerComponent implements OnInit {
 
   /**
    * Dataservice is injected into the component during initialization so we can access the csv-reader's data
+   * dataSet is used for storing the data given by DataService
    */
   dataSet: StockData[] = [];
 
@@ -38,7 +40,6 @@ export class TrackerComponent implements OnInit {
     this.dateEntered = true;
     console.log("date was fetched: " + this.range.value.start + ", " + this.range.value.end);
     this.filteredList = this.filterByDateRange(this.range.value.start, this.range.value.end);
-    this.filteredList.reverse();
     this.calculateBullTrend();
     this.calculateChanges();
     this.calculateSMA(this.range.value.start, this.range.value.end);
@@ -49,7 +50,6 @@ export class TrackerComponent implements OnInit {
    */
   filterByDateRange(startDate: any, endDate: any) {
     // gather all the values that fit into the date range
-    console.log("Filtering data")
     let filteredData: StockData[] = [];
     for (let i = 1; i < this.dataSet.length; i++) {
       console.log(this.dataSet);
@@ -58,9 +58,9 @@ export class TrackerComponent implements OnInit {
         filteredData.push(this.dataSet[i]);
       }
     }
-    // print the array upon finishing
-    console.log(filteredData);
-    return filteredData;
+    // print the array before returning
+    console.log(filteredData)
+    return filteredData.reverse();
   }
 
   
@@ -71,28 +71,25 @@ export class TrackerComponent implements OnInit {
   bullingStock: any;
   bullStart: any;
   calculateBullTrend() {
-    console.log("bulltrend");
     // going through the list and counting consecutive bulls
     let consecutiveBulls: number = 0;
     for (let i = 1; i < this.filteredList.length; i++) {
       console.log(i);
       if (this.filteredList[i].close > this.filteredList[i-1].close) {
         consecutiveBulls++;
-        console.log("bulls: " + consecutiveBulls);
       // displayed data is updated upon longer steak is done, reset after update
       } else if (consecutiveBulls > this.bullTrend) {
         this.bullTrend = consecutiveBulls;
         this.bullingStock = new Date(this.filteredList[i].date);
         this.bullStart = new Date(this.filteredList[i].date);
         this.bullStart.setDate(this.bullingStock.getDate() - consecutiveBulls);
-        console.log("bear, longest bull: " + consecutiveBulls);
         consecutiveBulls = 0;
       // reset when there is no bulls
       } else {
         consecutiveBulls = 0;
-        console.log("bear");
       }
     }
+    console.log(this.bullTrend)
   }
 
   /**
@@ -100,8 +97,9 @@ export class TrackerComponent implements OnInit {
   */
   sortedList: StockData[] = [];
   calculateChanges() {
-    console.log("Sig Changes");
+    // adding the data in the date range to a new array and sorting it
     this.sortedList = this.filteredList;
+    // the objects are sorted based on their volume and change in price
     this.sortedList.sort(function(a,b) {
       if (a.volume !== b.volume) {
         return b.volume - a.volume;
@@ -110,22 +108,26 @@ export class TrackerComponent implements OnInit {
         return b.change - a.change;
       }
     });
+    console.log(this.sortedList)
   }
 
   /**
-   * 
+   * calculates 5 day SMA 
+   * Non filtered data is used in generating the sma 5 data points
    */
   smaArray: SMAData[] = [];
   calculateSMA(startDate: any, endDate: any) {
-    console.log("sma calculation");
+    //console.log("sma calculation");
     for (let i = 1; i < this.dataSet.length; i++) {
       let stockDate = new Date(this.dataSet[i].date);
       if(stockDate >= startDate && stockDate <= endDate) {
+        // calculating the sma 5
         let closingPrice: number = 0;
         for (let j = 0; j < 5; j++) {
           closingPrice = closingPrice + Number.parseFloat(this.dataSet[i+j].close);
         }
         closingPrice = closingPrice / 5;
+        // Creating a new object array
         let smaItem = new SMAData;
         smaItem.date = this.dataSet[i].date;
         smaItem.sma = closingPrice.toFixed(3);
@@ -133,8 +135,10 @@ export class TrackerComponent implements OnInit {
         this.smaArray.push(smaItem);
       }
     }
+    // sorting the list based on the percentage change in the stock's price
     this.smaArray.sort(function(a,b) {
         return b.change - a.change;
       });
+    console.log(this.smaArray);
   }
 }

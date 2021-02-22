@@ -8,20 +8,18 @@
       <input matStartDate placeholder="Start Date" formControlName="start">
       <input matEndDate placeholder="End Date" formControlName="end">
     </mat-date-range-input>
-        
+    
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
-  <button mat-raised-button (click)="datePicked()">Fetch data</button> 
-    
+  <button mat-raised-button (click)="datePicked()">Fetch data</button>
 </div>
 
 <!-- the following section remains invisible until the user uploads the data file -->
 <div *ngIf="dateEntered">
-  <p>Displaying data from {{range.value.start | date}} to {{range.value.end | date}}</p>
+  <p>Displaying data from {{range.value.start | date : 'd.M.y'}} to {{range.value.end | date : 'd.M.y'}}</p>
    <!-- Longest bullish trend -->
-  <h5>Longest bull-ish trend: {{bullTrend}} days between {{bullStart | date}} and {{bullingStock | date}}</h5>
+  <h5>Longest bullish trend: {{bullTrend}} days between {{bullStart | date : 'd.M.y'}} and {{bullingStock | date : 'd.M.y'}}</h5>
 
   <!-- changes in volume & price table -->
   <mat-divider class="divider"></mat-divider>

@@ -8,6 +8,10 @@ import { DataService } from '../services/DataService'
   styleUrls: ['./csv-reader.component.css']
 })
 
+/**
+ * CSVReadercomponent generates data that is usable in other parts of the application
+ * The created data is transferred via DataService
+ */
 export class CSVReaderComponent implements OnInit {
 
   dataSet: StockData[] = [];
@@ -87,7 +91,6 @@ export class CSVReaderComponent implements OnInit {
   }  
   
   /**
-   * 
    * @param textData
    * @returns the number of values in an array
    */
