@@ -52,8 +52,8 @@ More specific details:
 
 ## Development server dependencies
 Running the development server has the following dependencies:
-- Node.js
-- Angular-cli
+- [Node.js](https://nodejs.org/en/)
+- [Angular CLI](https://angular.io/cli)
 
 ## Development server
 
