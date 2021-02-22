@@ -1,56 +1,62 @@
+ <!-- date range input section -->
 <div>
-    <p>Step 2: Enter the date range</p>
-    <mat-form-field appearance="outline" class="field">
-      <mat-label>Select Date Range</mat-label>
-         
-      <mat-date-range-input [rangePicker]="picker" [formGroup]="range" class="field">
-        <input matStartDate placeholder="Start Date" formControlName="start">
-        <input matEndDate placeholder="End Date" formControlName="end">
-      </mat-date-range-input>
-          
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-         
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
-    <button mat-raised-button (click)="datePicked()">Fetch data</button> 
+  <h5>Step 2: Enter the date range</h5>
+  <mat-form-field appearance="outline" class="field">
+    <mat-label>Select Date Range</mat-label>
+        
+    <mat-date-range-input [rangePicker]="picker" [formGroup]="range" class="field">
+      <input matStartDate placeholder="Start Date" formControlName="start">
+      <input matEndDate placeholder="End Date" formControlName="end">
+    </mat-date-range-input>
+        
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+  <button mat-raised-button (click)="datePicked()">Fetch data</button> 
     
-  
 </div>
 
+<!-- the following section remains invisible until the user uploads the data file -->
 <div *ngIf="dateEntered">
   <p>Displaying data from {{range.value.start | date}} to {{range.value.end | date}}</p>
-  <p>Longest bull-ish trend: {{bullTrend}} days between {{bullStart | date}} and {{bullingStock | date}}</p>
+   <!-- Longest bullish trend -->
+  <h5>Longest bull-ish trend: {{bullTrend}} days between {{bullStart | date}} and {{bullingStock | date}}</h5>
+
+  <!-- changes in volume & price table -->
   <mat-divider class="divider"></mat-divider>
+  <h5>The largest trade volume and price changes in selected date range:</h5>
   <table class="minimalistBlack">    
     <thead>    
       <tr>    
-        <th>Date </th>       
-        <th>Volume </th>    
-        <th>Change </th>    
+        <th>Date: </th>       
+        <th>Trading Volume: </th>    
+        <th>Price Change($): </th>    
       </tr>    
     </thead>    
     <tbody>    
       <tr *ngFor="let data of sortedList;let i = index;">    
-        <td> <span>{{data.date}}</span> </td>
+        <td> <span>{{data.date | date : 'd.M.y'}}</span> </td>
         <td> <span>{{data.volume}}</span> </td>
         <td> <span>${{data.change}}</span> </td>
       </tr>    
     </tbody>
   </table>
 
+  <!-- sma 5 table -->
   <mat-divider class="divider"></mat-divider>
-  <p>The best opening price compared to 5 day average:</p>
+  <h5>The greatest changes in price according to 5 day Slow Moving Average:</h5>
   <table class="minimalistBlack">    
     <thead>    
       <tr>    
-        <th>Date </th>    
-        <th>SMA-5 </th>    
-        <th>Price change </th>      
+        <th>Date: </th>    
+        <th>SMA 5: </th>    
+        <th>Price Change(%): </th>      
       </tr>    
     </thead>    
     <tbody>    
       <tr *ngFor="let smaItem of smaArray;let i = index;">    
-        <td> <span>{{smaItem.date}}</span> </td>    
+        <td> <span>{{smaItem.date | date : 'd.M.y'}}</span> </td>    
         <td> <span>{{smaItem.sma}}</span> </td>    
         <td> <span>{{smaItem.change}}%</span> </td>    
       </tr>    

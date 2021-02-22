@@ -65,7 +65,7 @@ export class CSVReaderComponent implements OnInit {
       let currentLine = (<string>textData[i]).split(',');  
       if (currentLine.length == valueCount) {  
         let csvItem: StockData = new StockData();  
-        csvItem.date = currentLine[0].trim();  
+        csvItem.date = new Date(currentLine[0].trim());  
         csvItem.close = currentLine[1].trim().slice(1);  
         csvItem.volume = currentLine[2].trim();  
         csvItem.open = currentLine[3].trim().slice(1);  
