@@ -1,5 +1,6 @@
 # StockApp
 
+A simple stock analyzer
 
 ## About
 
