@@ -17,10 +17,8 @@ After selecting the date range the application is ready to use and you can click
 
 ## Setup instructions
 
-The live demo of the application can be tested at [villekautto.xyz](http://villekautto.xyz)
-
-Otherwise you can clone the repository or download the .zip folder from the github page and run tehe server on your computer.
-Instructions can be found  below
+You can clone the repository or download the .zip folder from the github page and run the server on your computer.
+Instructions for site setup can be found below in "build" -section
 
 ## Project's folder structure
 
