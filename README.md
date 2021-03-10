@@ -1,6 +1,6 @@
 # StockApp
 
-A simple stock analyzer
+A simple stock analyzer developed by Ville Kautto
 
 ## About
 

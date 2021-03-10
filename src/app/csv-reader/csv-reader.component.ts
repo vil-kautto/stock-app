@@ -1,27 +1,43 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { StockData } from '../../assets/models/StockData';
+import { StockData } from '../../assets/models/stockData';
 import { DataService } from '../services/DataService'
-
-@Component({
-  selector: 'csv-reader',
-  templateUrl: './csv-reader.component.html',
-  styleUrls: ['./csv-reader.component.css']
-})
 
 /**
  * CSVReadercomponent generates data that is usable in other parts of the application
  * The created data is transferred via DataService
  */
+@Component({
+  selector: 'csv-reader',
+  templateUrl: './csv-reader.component.html',
+  styleUrls: ['./csv-reader.component.css']
+})
 export class CSVReaderComponent implements OnInit {
 
+  /**
+   * DataSet is list of stockdata -objects
+   */
   dataSet: StockData[] = [];
+  
+  /**
+   * fileUploaded shows html elements when the csv file is uploaded
+   */
   fileUploaded: boolean = false;
+
+  /**
+   * the constructor declares the dataservice used for sharing data 
+   */ 
   constructor( private dataSource: DataService ) {}
 
+  /**
+   * Connecting the CVS reader to Datasource for sharing the stockdata between components 
+   */
   ngOnInit() {
     this.dataSource.currentDataSet.subscribe(dataSet => this.dataSet.push(dataSet));
   }
    
+  /**
+   * Finds a html component tagged csvReader 
+   */
   @ViewChild('csvReader') csvReader: any;
   
   /**
@@ -82,7 +98,7 @@ export class CSVReaderComponent implements OnInit {
   }  
   
   /**
-   * simple file extension check
+   * Simple file extension check
    * @param file 
    * @returns a boolean based on the file's extension
    */
@@ -91,6 +107,7 @@ export class CSVReaderComponent implements OnInit {
   }  
   
   /**
+   * getheadercount simply counts the number of headers in order to display data correctlly
    * @param textData
    * @returns the number of values in an array
    */

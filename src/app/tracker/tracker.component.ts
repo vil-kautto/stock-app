@@ -1,41 +1,66 @@
 import { Component, OnInit } from '@angular/core';
-import { StockData } from '../../assets/models/StockData';
+import { StockData } from '../../assets/models/stockData';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DataService } from '../services/DataService'
 import { SMAData } from '../../assets/models/SMAData';
 
+/**
+ * TrackerComponent Keeps track of Stockdata and Displays data upon data updates
+ */
 @Component({
   selector: 'app-tracker',
   templateUrl: './tracker.component.html',
   styleUrls: ['./tracker.component.css']
 })
 export class TrackerComponent implements OnInit {
-  // this formgroup is used by the date picker in the .html file
+  /**
+   * this formgroup is used by the date picker in the .html file
+   */
   range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
   });
 
   /**
-   * Dataservice is injected into the component during initialization so we can access the csv-reader's data
    * dataSet is used for storing the data given by DataService
    */
   dataSet: StockData[] = [];
 
+   /**
+   * Dataservice is injected into the component during initialization so we can access the csv-reader's data
+   */
   constructor( private dataSource: DataService ) {}  
-
+/**
+ * Subscribing to the Datasource in order to get updates to the Stockdata
+ */
   ngOnInit() {
     this.dataSource.currentDataSet.subscribe(dataSet => this.dataSet.push(dataSet));
   }
 
   /**
+   * dateEntered turns true when the user gives the date range
+   */
+  dateEntered: boolean = false;
+
+  /**
+   * FilteredList contains all stockdata that fit the given date range 
+   */
+  filteredList: StockData[] = [];
+
+  /**
+   * startDate contains the start of the date range
+   */
+  startDate: Date = new Date;
+
+   /**
+   * endDate contains the start of the date range
+   */
+  endDate: Date = new Date;
+
+  /**
    * datePicked is firing when user clicks the 'fetch data' -button
    * Starts the execution sequence
    */
-  dateEntered: boolean = false;
-  filteredList: StockData[] = [];
-  startDate: any;
-  endDate: any;
   datePicked() {
     this.dateEntered = true;
     console.log("date was fetched: " + this.range.value.start + ", " + this.range.value.end);
@@ -65,11 +90,23 @@ export class TrackerComponent implements OnInit {
 
   
   /**
-   * CalculateBullTrend calculates the longest growth streak in days and displays the highest streak date in the page
+   * Bulltrend ounts the continius days of bulling trend
    */
   bullTrend: number = 0;
-  bullingStock: any;
-  bullStart: any;
+
+  /**
+   * BullingStock keeps track of current date if the stock is bullish
+   */
+  bullingStock: Date = new Date;
+
+  /**
+   * bullStart is stores the data about bull trend start
+   */
+  bullStart: Date = new Date;
+  
+  /**
+   * CalculateBullTrend calculates the longest growth streak in days and displays the highest streak date in the page
+   */
   calculateBullTrend() {
     // going through the list and counting consecutive bulls
     let consecutiveBulls: number = 0;
@@ -93,9 +130,13 @@ export class TrackerComponent implements OnInit {
   }
 
   /**
-  * Sorts data on two basis: first based on their volume, secondly by the change in the price
+  * SortedList contains Stock data Sorted by calculateChanges
   */
   sortedList: StockData[] = [];
+
+   /**
+  * Sorts data on two basis: first based on their volume, secondly by the change in the price
+  */
   calculateChanges() {
     // adding the data in the date range to a new array and sorting it
     this.sortedList = this.filteredList;
@@ -112,10 +153,13 @@ export class TrackerComponent implements OnInit {
   }
 
   /**
+   * smaArray contains sorted SMAData objects
+   */
+  smaArray: SMAData[] = [];
+  /**
    * calculates 5 day SMA 
    * Non filtered data is used in generating the sma 5 data points
    */
-  smaArray: SMAData[] = [];
   calculateSMA(startDate: any, endDate: any) {
     //console.log("sma calculation");
     for (let i = 1; i < this.dataSet.length; i++) {

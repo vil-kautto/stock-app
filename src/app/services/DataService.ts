@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { StockData } from '../../assets/models/StockData';
+import { StockData } from '../../assets/models/stockData';
 
+/**
+ * DataService provides a way to share StockData between different components
+ */
 @Injectable({
     providedIn: 'root'
   })
-  /**
-   * DataService provides a way to share StockData between different components
-   */
 export class DataService {
+    /**
+     * @ignore
+     */
     private dataSource = new BehaviorSubject<StockData>(new StockData);
+    /** 
+     * @ignore
+     */
     currentDataSet = this.dataSource.asObservable();
-
-    constructor() {  };
 
     /**
      * Adds a new StockData object to DataSet 
