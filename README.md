@@ -18,6 +18,14 @@ After selecting the date range the application is ready to use and you can click
 
 ## Setup instructions
 
+### Test the site
+
+Download the website files at releases and download the latest release
+
+After downloading the .zip file, unzip the files and move unzipped files for your web server
+
+### Development environment
+
 You can clone the repository or download the .zip folder from the github page and run the server on your computer.
 Instructions for site setup can be found below in "build" -section
 
