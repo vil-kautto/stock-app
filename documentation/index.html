@@ -1,0 +1,156 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>stock-app documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">stock-app documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="stockapp">StockApp</h1>
+<p>A simple stock analyzer developed by Ville Kautto</p>
+<h2 id="about">About</h2>
+<p>This is a demo app for fetching stock data and displaying it on a web application.</p>
+<h2 id="usage">Usage</h2>
+<p>To use the application you must upload a .csv file which contains stock&#39;s historical quotes</p>
+<p>The data can be feched from <a href="https://www.nasdaq.com/market-activity">nasdaq&#39;s website</a></p>
+<p>After uploading the data you are asked to enter a date range, in whivh you simply pick the start and end dates</p>
+<p>After selecting the date range the application is ready to use and you can click the &quot;fetch data&quot; button to display the information.</p>
+<h2 id="setup-instructions">Setup instructions</h2>
+<p>You can clone the repository or download the .zip folder from the github page and run the server on your computer.
+Instructions for site setup can be found below in &quot;build&quot; -section</p>
+<h2 id="projects-folder-structure">Project&#39;s folder structure</h2>
+<div><pre class="line-numbers"><code class="language-none">stock-app (project&#39;s root directory)
+|
+├───dist (angular&#39;s default build directory)
+│   └───stock-app
+|
+├───e2e (end to end tests - unused in the project)
+│   └───src
+|
+├───node-modules (conains all the packages needed in the project)
+│
+└───src (source code of the project)
+    ├───app (code for each component)
+    │   ├───csv-reader (reads and generates data from .csv files)
+    │   ├───services (transfers data between components)
+    │   └───tracker (Handles all data related operations)
+    ├───assets (contains data objects used in the components)
+    │   └───models
+    └───environments</code></pre></div><p>More specific details:</p>
+<ul>
+<li>the root directory also contains angular&#39;s setting files</li>
+<li>the src directory also contains files for managing the appalication&#39;s base settings</li>
+<li>only the files in the source directory have been edited</li>
+</ul>
+<h2 id="development-server-dependencies">Development server dependencies</h2>
+<p>Running the development server has the following dependencies:</p>
+<ul>
+<li><a href="https://nodejs.org/en/">Node.js</a></li>
+<li><a href="https://angular.io/cli">Angular CLI</a></li>
+</ul>
+<h2 id="development-server">Development server</h2>
+<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 11.1.3. The following instructions were generated during project&#39;s initialization</p>
+<p>clone the repository and run <code>ng serve</code> on the project&#39;s root directory for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
+<h2 id="code-scaffolding">Code scaffolding</h2>
+<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive|pipe|service|class|guard|interface|enum|module</code>.</p>
+<h2 id="build">Build</h2>
+<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory. Use the <code>--prod</code> flag for a production build.</p>
+<h2 id="running-unit-tests">Running unit tests</h2>
+<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
+<h2 id="running-end-to-end-tests">Running end-to-end tests</h2>
+<p>Run <code>ng e2e</code> to execute the end-to-end tests via <a href="http://www.protractortest.org/">Protractor</a>.</p>
+<h2 id="further-help">Further help</h2>
+<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://angular.io/cli">Angular CLI Overview and Command Reference</a> page.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'index.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
