@@ -2,6 +2,8 @@
 
 A simple stock analyzer developed by Ville Kautto
 
+![Image](https://i.imgur.com/gae0gSW.png)
+
 ## About
 
 This is a demo app for fetching stock data and displaying it on a web application.
