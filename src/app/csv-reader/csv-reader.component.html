@@ -1,5 +1,6 @@
 <div>
-  <h5>Step 1: Upload a .csv file</h5>
+  <h5>Step 1: Upload a .csv file which contains the historical quotes of a stock</h5>
+  <h5>Note: If you don't have a file with ticker's historical quotes, you can download them from <a href="https://www.nasdaq.com/market-activity/">Nasdaq's site</a></h5>
   <input type="file" #csvReader name="Upload CSV" id="txtFileUpload" (change)="uploadListener($event)" accept=".csv" />    
 </div>
 
